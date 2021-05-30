@@ -1,0 +1,27 @@
+{
+  "name": "quest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=dev ts-node ./src/index.ts",
+    "prod": "ts-node ./src/test.ts",
+    "test": "NODE_ENV=test mocha -r ts-node/register ./src/tests/\\*\\*/\\*.spec.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^12.12.7",
+    "@types/readline-sync": "^1.4.3",
+    "chai": "^4.2.0",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.5",
+    "@types/mocha": "^5.2.7",
+    "mocha": "^6.2.2",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
+  }
+}
