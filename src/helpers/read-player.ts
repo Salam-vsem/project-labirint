@@ -1,6 +1,7 @@
 import {readFileSync} from 'fs';
 import { Player, Position } from '../game/types';
 import { isArray, isObject, isString, isError, isNumber } from 'util';
+import { writePlayers } from './write-player';
 
 const isPosition = (position: Position): position is Position => (
     isObject(position) &&
@@ -19,20 +20,16 @@ const isPlayer = (playersArray: Player[]): playersArray is Player[] => (
 );
 
 export const readPlayers = () => {
+    let playersArray: Player[] = [];
     try {
-        const playersArray = JSON.parse(readFileSync('./files/players.json').toString());
+        playersArray = JSON.parse(readFileSync('./files/players.json').toString())
+    }catch(e) {
+        playersArray = [];
+    }
 
-        if(!isPlayer(playersArray)) {
-            console.log('Да это же не игрок, ауууу');
-            return [];
-        }
-
-        return playersArray;
-        
-    } catch (e) {
-        if (isError(e)) {
-            console.log(e.message);
-        }
+    if(!isPlayer(playersArray)) {
         return [];
     }
+
+    return playersArray;
 };

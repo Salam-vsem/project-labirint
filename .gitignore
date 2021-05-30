@@ -1,1 +1,4 @@
 /node_modules
+files/maps/*
+files/players.json
+.DS_Store

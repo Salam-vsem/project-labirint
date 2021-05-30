@@ -5,8 +5,8 @@ import { writePlayers } from "../helpers/write-player";
 import { isUndefined, isNumber } from "util";
 import { move } from "./move";
 import { inputChoice } from "./input-choice";
-import { labirint } from "../config/labirint";
-import { findStartOrFinish } from "../helpers/find-positions";
+import { defaultLabirint } from "../config/labirint";
+import { findStartOrFinishPosition } from "../helpers/find-positions";
 
 /*
 начинаем игру (цикл локация)
@@ -25,7 +25,7 @@ import { findStartOrFinish } from "../helpers/find-positions";
 
 // проерка выиграл ли
 const playerWin = (player: Player, finishPosition: Position): boolean => {
-    if(player.position.row === finishPosition.row && player.position.col === finishPosition.row) {
+    if(player.position.row === finishPosition.row && player.position.col === finishPosition.col) {
         return true;
     }
     return false;
@@ -44,8 +44,8 @@ export const game = (playerName: string, players: Player[], labirint: Labirint):
     // достаем игрока из массива по его имени
     const playerID = players.map(player => player.name).indexOf(playerName);
     const player = players[playerID];
-    const start = findStartOrFinish(labirint, true);
-    const finish = findStartOrFinish(labirint, false);
+    const start = findStartOrFinishPosition(labirint);
+    const finish = findStartOrFinishPosition(labirint, true);
 
     if(!start || !finish) {
         return;

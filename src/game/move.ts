@@ -60,7 +60,6 @@ const pickUpKey = (cell: Cell, player: Player): boolean => {
       .filter(cellKey => player.keys.every(playerKey => playerKey !== cellKey));
 
     filteredKeys.forEach(key => player.keys.push(key));
-    console.log('keys: ', player.keys);
     return true;
   }
   return false;
@@ -145,9 +144,7 @@ export const move = (player: Player, labirint: Labirint, playerChoice: Direction
     cell = labirint[player.position.row][player.position.col];
     lastDirection = nextDirection;
     nextDirection = getNextDirection(cell, lastDirection);
-    console.log('row: ', player.position.row, '\ncol: ', player.position.col);
   } while (!hasCome(player, cell));
-  console.log('lookDirection: ', player.lookDirection);
   player.locationMessage = formLocationMessage(
     {
       hasPickedUpKey: pickUpKey(cell, player),

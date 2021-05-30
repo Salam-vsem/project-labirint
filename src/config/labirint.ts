@@ -1,6 +1,6 @@
 import { Labirint, Direction } from "../game/types";
 
-export const labirint: Labirint = [
+export const defaultLabirint: Labirint = [
     [
         {
                 directions: {
@@ -9,7 +9,7 @@ export const labirint: Labirint = [
                     [Direction.left]: false,
                     [Direction.up]: false,
                 },
-                keys: [222],
+                keys: [2],
         },
         {
             directions: {
@@ -49,9 +49,9 @@ export const labirint: Labirint = [
         {
             directions: {
                 [Direction.down]: true,
-                [Direction.right]: 222,
+                [Direction.right]: 2,
                 [Direction.left]: false,
-                [Direction.up]: 111,
+                [Direction.up]: 1,
             },
     },
     {
@@ -171,50 +171,52 @@ export const labirint: Labirint = [
                 [Direction.left]: true,
                 [Direction.up]: false,
             },
-            keys: [111]
+            keys: [1]
     },  
     ],
 
     [
         {
+            isStart: true,
             directions: {
-                [Direction.down]: true,
+                [Direction.down]: false,
                 [Direction.right]: false,
                 [Direction.left]: false,
                 [Direction.up]: true,
             },
-    },
-    {
-            directions: {
-                [Direction.down]: true,
-                [Direction.right]: false,
-                [Direction.left]: false,
-                [Direction.up]: false,
-        }
-    },
-    {
-            directions: {
-                [Direction.down]: false,
-                [Direction.right]: true,
-                [Direction.left]: 222,
-                [Direction.up]: false,
-        }
-    },
-    {
-            directions: {
-                [Direction.down]: false,
-                [Direction.right]: false,
-                [Direction.left]: true,
-                [Direction.up]: true,
+        },
+        {
+                isFinish: true,
+                directions: {
+                    [Direction.down]: false,
+                    [Direction.right]: false,
+                    [Direction.left]: false,
+                    [Direction.up]: false,
             }
-    },
-    {
-            directions: {
-                [Direction.down]: false,
-                [Direction.right]: false,
-                [Direction.left]: false,
-                [Direction.up]: true,
+        },
+        {
+                directions: {
+                    [Direction.down]: false,
+                    [Direction.right]: true,
+                    [Direction.left]: 2,
+                    [Direction.up]: false,
             }
-    }, 
+        },
+        {
+                directions: {
+                    [Direction.down]: false,
+                    [Direction.right]: false,
+                    [Direction.left]: true,
+                    [Direction.up]: true,
+                }
+        },
+        {
+                directions: {
+                    [Direction.down]: false,
+                    [Direction.right]: false,
+                    [Direction.left]: false,
+                    [Direction.up]: true,
+                }
+        }, 
     ],
 ];

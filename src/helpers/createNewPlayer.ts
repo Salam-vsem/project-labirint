@@ -1,7 +1,7 @@
 
 import { Player, Direction, Labirint, Position } from '../game/types'
 import { loadLabirint } from './read-labirint';
-import { findStartOrFinish } from '../helpers/find-positions';
+import { findStartOrFinishPosition } from '../helpers/find-positions';
 
 interface PlayerValidationInfo {
     name: string;
@@ -28,10 +28,9 @@ const nameIsUnique = (playerInfo: PlayerValidationInfo) => {
         .every(player => player.name != playerInfo.name);
 }
 
-export const createNewPlayer = (player: PlayerValidationInfo): Player => {
-    const labirint = loadLabirint();
-    const start = findStartOrFinish(labirint, true);
-    if(!start) {
+export const createNewPlayer = (player: PlayerValidationInfo, labirint: Labirint, labirintName?: string): Player => {
+    const position = findStartOrFinishPosition(labirint);
+    if(!position) {
         throw new StartError();
     }
     if(!nameIsUnique(player)) {
@@ -40,12 +39,10 @@ export const createNewPlayer = (player: PlayerValidationInfo): Player => {
     
     return {
         name: player.name,
+        labirintName,
         locationMessage: 'Вы на старте.',
         lookDirection: Direction.up,
-        position: {
-            row: start.row,
-            col: start.col
-        },
+        position,
         keys: [],
     };
 } 

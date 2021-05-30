@@ -12,6 +12,7 @@ export interface Position {
 
 export interface Player {
     name: string;
+    labirintName?: string;
     locationMessage: string;
     lookDirection: Direction;
     position: {
